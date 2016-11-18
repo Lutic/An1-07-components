@@ -1,3 +1,18 @@
-/**
- * Created by Elnara_Mikailova on 11/18/2016.
- */
+(function() {
+  "use strict";
+
+  angular
+    .module("accordionModule")
+    .component('accordionPanel', {
+      templateUrl: 'components/accordion/accordion-panel/accordion-panel.html',
+      controller: 'AccordionPanel',
+      transclude: true,
+      require: {
+        parent: '^accordion'
+      },
+      bindings: {
+        header: '@'
+      }
+    });
+
+})();

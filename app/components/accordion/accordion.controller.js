@@ -2,17 +2,31 @@
     "use strict";
 
     angular
-        .module("simpleModule")
-        .controller('simple', Simple);
+        .module("accordionModule")
+        .controller('Accordion', Accordion);
 
-    function Simple() {
-        let ctrl = this;
+    function Accordion() {
+        let $ctrl = this,
+            panels = [];
 
-        ctrl.header = 'Hello!'
-
-        ctrl.hello = function () {
-            alert('Hello');
+        $ctrl.addPanel = function (panel) {
+            panels.push(panel);
+            if (panels.length > 0) {
+                panels[0].turnOn();
+            }
         }
+
+        $ctrl.selectPanel = function (panel) {
+            for (let p of panels) {
+                if (p === panel) {
+                    p.turnOn();
+                } else {
+                    p.turnOff();
+                }
+            }
+        }
+
+
     }
 
 })();
